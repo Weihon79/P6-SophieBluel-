@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #FFFEF8;/*ajouté*/
 }
 header {
 	display: flex;
@@ -94,8 +95,15 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
-li:hover {
+/*---------Ajouté-----------*/
+nav a {
+	text-decoration: none;
+	cursor: pointer;
+	color: black;
+}
+/*-------------------------*/
+li:hover,
+a:hover {
 	color: #B1663C;
 }
 #introduction {
@@ -179,13 +187,31 @@ li:hover {
 	width: 50%;
 	margin: auto;
 }
-#contact > * {
+#login /*ajouté*/ {
+	width: 35%;
+	margin: auto;
+}
+
+#login /*ajouté*/ {
+	margin-top: 130px;
+	margin-bottom: 400px;
+}
+
+#contact,
+#login /*ajouté*/ > * {
 	text-align: center;
 
 }
-#contact h2{
+#contact h2 {
 	margin-bottom: 20px;
 }
+
+#login form {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+}
+
 #contact form {
 	text-align: left;
 	margin-top:30px;
@@ -193,13 +219,16 @@ li:hover {
 	flex-direction: column;
 }
 
-#contact input {
+#contact input,
+#login input /*ajouté*/ {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+
+#contact label,
+#login label /*ajouté*/ {
 	margin: 2em 0 1em 0;
 }
 #contact textarea {
@@ -216,6 +245,16 @@ input[type="submit"] {
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
+}
+input[type="submit"]:hover {
+	transform: scale(1.1);
+}
+
+#login a /*ajouté*/ {
+	display: flex;
+    justify-content: center;
+	color: black;
 }
 
 footer nav ul {

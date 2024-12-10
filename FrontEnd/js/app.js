@@ -11,7 +11,7 @@ async function getWorks() {
     } catch (error) {
       console.error(error.message);
     }
-  }
+}
   
 getWorks();
 
@@ -28,11 +28,11 @@ const galleryData = [
     { src: "assets/images/appartement-paris-xviii.png", alt: "Appartement Paris XVIII", caption: "Appartement Paris XVIII", category: "Appartements" },
     { src: "assets/images/bar-lullaby-paris.png", alt: "Bar “Lullaby” - Paris", caption: "Bar “Lullaby” - Paris", category: "Hotel & Restaurants" },
     { src: "assets/images/hotel-first-arte-new-delhi.png", alt: "Hotel First Arte - New Delhi", caption: "Hotel First Arte - New Delhi", category: "Hotel & Restaurants" },
-  ];
+];
   
-  const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.gallery');
   
-  galleryData.forEach(data => {
+galleryData.forEach(data => {
     const figure = document.createElement('figure');
 
     const img = document.createElement('img');
@@ -45,7 +45,7 @@ const galleryData = [
     gallery.appendChild(figure);
     figure.appendChild(img);
     figure.appendChild(figcaption);
-  });
+});
   
 const categories = [...new Set(galleryData.map(item => item.category))];
 
@@ -55,6 +55,11 @@ const allButton = document.createElement("button");
 allButton.textContent = "Tous";
 allButton.addEventListener("click", () => displayGallery(galleryData));
 filtersContainer.appendChild(allButton);
+
+window.addEventListener('load', () => {
+    const allButton = document.querySelector("button");
+    allButton.focus();
+  });
 
 categories.forEach(category => {
     const button = document.createElement("button");

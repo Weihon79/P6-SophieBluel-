@@ -92,3 +92,17 @@ function displayGallery(data) {
 }
 
 displayGallery(galleryData);
+
+
+/*Passage en mode édition*/
+function editMode() {
+  if (sessionStorage.authToken) {
+    console.log("ok");
+    const editBanner = document.createElement("div");
+    editBanner.className = "edit";
+    editBanner.innerHTML = '<i class="fa-solid fa-pen-to-square"></i><p>Mode édition</p>';
+    document.body.prepend(editBanner);
+  }
+}
+
+editMode();

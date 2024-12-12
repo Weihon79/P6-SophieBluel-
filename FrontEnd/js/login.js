@@ -26,9 +26,12 @@ async function handleSubmit(event) {
         errorBox.className = ("loginError")
         errorBox.innerHTML = "L'e-mail ou le mot de passe est erroné";
         document.querySelector('form').prepend(errorBox);
+    } else {
+        let result = await response.json();
+        const token = result.token;
+        sessionStorage.setItem("authToken", token);
+        window.location.href ="index.html";
+        console.log(token);
     }
-    let result = await response.json();
-    const token = result.token;
-    sessionStorage.setItem("authToken", token);
-    console.log(token);
+
 }

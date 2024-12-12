@@ -54,10 +54,30 @@ body {
 	font-size: 14px;
 	background-color: #FFFEF8;/*ajouté*/
 }
+.edit /*Ajouté*/{
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	color: white;
+	height: 59px;
+	width: 100vw;
+	gap: 15px;
+	cursor: pointer;
+}
+.edit p /*Ajouté*/{
+	font-weight: 400;
+	font-size: 16px;
+}
+
+
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 100px 0
 }
 section {
 	margin: 50px 0
@@ -255,6 +275,16 @@ input[type="submit"]:hover {
 	display: flex;
     justify-content: center;
 	color: black;
+}
+
+.loginError /*ajouté*/ {
+	font-size: 17px;
+	color: rgb(190, 4, 4);
+}
+
+.pass-recover {
+	font-size: 14px;
+	font-weight: 500;
 }
 
 footer nav ul {

@@ -185,6 +185,11 @@ a:hover {
 	background-color: #1D6154; 
 	color: #FFFFFF;
 }
+
+.filters button.active {
+    background-color: #1D6154; 
+    color: #FFFFFF;
+}
 /*---------------------------*/
 .gallery {
 	width: 100%;

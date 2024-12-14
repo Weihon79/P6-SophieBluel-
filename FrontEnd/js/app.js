@@ -144,6 +144,14 @@ function editMode() {
       editBanner.className = "edit";
       editBanner.innerHTML = '<i class="fa-solid fa-pen-to-square"></i><p>Mode édition</p>';
       document.body.prepend(editBanner);
+
+      const sectionHeader = document.querySelector(".section-header");
+      const editLink = document.createElement("a");
+      editLink.href = "#modal1";
+      editLink.className = "edit-link";
+      editLink.innerHTML = '<i class="fa-solid fa-pen-to-square"></i> modifier';
+      sectionHeader.appendChild(editLink);
+
   }
 }
 /*---------------------------------------------------------------------------------------------*/
@@ -154,5 +162,5 @@ window.addEventListener('load', () => {
   getWorks();
   editMode();
 });
-
 /*---------------------------------------------------------------------------------------------*/
+

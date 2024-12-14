@@ -122,8 +122,8 @@ nav a {
 	color: black;
 }
 /*-------------------------*/
-li:hover,
-a:hover {
+header li:hover,
+header a:hover {
 	color: #B1663C;
 }
 #introduction {
@@ -149,9 +149,29 @@ a:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+.section-header /*Ajouté*/ {
+	position: relative;
+	text-align: center;
+}
+.section-header h2 /*Ajouté*/ {
+    margin: 0;
+}
+.section-header .edit-link /*Ajouté*/ {
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(50% + 130px);
+    color: black;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Work Sans';
+    font-weight: 400;
+	font-size: 14px;
+}
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 
 /*---------Ajouté-----------*/
@@ -298,3 +318,12 @@ footer nav ul {
 	margin: 2em
 }
 
+/* Responsive */
+@media (max-width: 500px) {
+	.section-header .edit-link {
+		position: absolute; 
+		top: 170%;
+		transform: translateY(-70%);
+		left: calc(50% + -30px);
+	}
+}

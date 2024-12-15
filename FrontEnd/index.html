@@ -12,7 +12,6 @@
     integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="./js/app.js" defer></script>
 </head>
 <body>
 <header>
@@ -44,54 +43,107 @@
 		</div>
 
 		<aside id="modal1" class="js-modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
-			<div class="modal-wrapper">
-				<button><i class="fa-solid fa-xmark"></i></button>
-				<h1 id="titlemodal">Galerie photos</h1>
+			<div class="modal-wrapper js-modal-stop">
+				<button class="js-modal-close closeButton"><i class="fa-solid fa-xmark"></i></button>
+				<h1 id="titlemodal">Galerie photo</h1>
 				<div class="gallery-modal">
-					<figure>
+					<div class="gallery-item">
 						<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-						<figcaption>Abajour Tahina</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-						<figcaption>Appartement Paris V</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-						<figcaption>Restaurant Sushisen - Londres</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-						<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-						<figcaption>Structures Thermopolis</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-						<figcaption>Appartement Paris X</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-						<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-						<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-						<figcaption>Appartement Paris XVIII</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-						<figcaption>Bar “Lullaby” - Paris</figcaption>
-					</figure>
-					<figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="gallery-item">
 						<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-						<figcaption>Hotel First Arte - New Delhi</figcaption>
-					</figure>
+						<button class="delete-btn">
+							<i class="fa-solid fa-trash-can"></i>
+						</button>
+					</div>
+					<div class="seperate"></div>
+					<div class="addButton" id="js-addButton">Ajouter une photo</div>
+				</div>
+			</div>
+		</aside>
+
+		<aside id="modal2" class="js-modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
+			<div class="modal-wrapper modal-wrapper2 js-modal-stop">
+				<div class="gallery-modal flexcolumn">
+					<button class="js-modal-close closeButton"><i class="fa-solid fa-xmark"></i></button>
+					<button class="js-modal-back backButton"><i class="fa-solid fa-arrow-left"></i></button>
+					<h1 id="titlemodal2">Ajout photo</h1>
+					<div class="add-image-container">
+						<i class="fa-regular fa-image"></i>
+						<button class="addImage-modal2">+ Ajouter photo</button>
+						<p class="formatModal2">jpg, png : 4mo max</p>
+					</div>
+
+					<section id="form-modal2">
+						<form action="submit" method="POST">
+							<label for="title">Titre</label>
+							<input type="text" id="title" name="title" required><br><br>
+							<label for="category">Catégorie</label>
+							<select id="category" name="category" required>
+								<!--ICI EN JAVASCRIPT-->
+							</select>
+						</form>
+					</section>
+
+					<div class="seperate"></div>
+					<div class="addButton">Valider</div>
 				</div>
 			</div>
 		</aside>
@@ -100,50 +152,7 @@
 
 		</nav>
 		<div class="gallery">
-			<!-- <figure>
-				<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-				<figcaption>Abajour Tahina</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-				<figcaption>Appartement Paris V</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-				<figcaption>Restaurant Sushisen - Londres</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-				<figcaption>Villa “La Balisiere” - Port Louis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-				<figcaption>Structures Thermopolis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-				<figcaption>Appartement Paris X</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-				<figcaption>Pavillon “Le coteau” - Cassis</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-				<figcaption>Villa Ferneze - Isola d’Elba</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-				<figcaption>Appartement Paris XVIII</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-				<figcaption>Bar “Lullaby” - Paris</figcaption>
-			</figure>
-			<figure>
-				<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-				<figcaption>Hotel First Arte - New Delhi</figcaption>
-			</figure> -->
+
 		</div>
 	</section>
 	<section id="contact">
@@ -168,5 +177,6 @@
 		</ul>
 	</nav>
 </footer>
+<script src="./js/app.js"></script>
 </body>
 </html>

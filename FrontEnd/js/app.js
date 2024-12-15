@@ -138,44 +138,100 @@ function setActiveButton(selectedButton) {
  */
 function editMode() {
   if (sessionStorage.authToken) {
-      console.log("Mode édition activé");
+    console.log("Mode édition activé");
 
-      const editBanner = document.createElement("div");
-      editBanner.className = "edit";
-      editBanner.innerHTML = '<i class="fa-solid fa-pen-to-square"></i><p>Mode édition</p>';
-      document.body.prepend(editBanner);
+    const editBanner = document.createElement("div");
+    editBanner.className = "edit";
+    editBanner.innerHTML = '<i class="fa-solid fa-pen-to-square"></i><p>Mode édition</p>';
+    document.body.prepend(editBanner);
+    /*-------------------------------------------------------------------------------------*/
+    const sectionHeader = document.querySelector(".section-header");
+    const editLink = document.createElement("a");
+    editLink.href = "#modal1";
+    editLink.className = "edit-link";
+    editLink.innerHTML = '<i class="fa-solid fa-pen-to-square"></i> modifier';
+    sectionHeader.appendChild(editLink);
 
-      const sectionHeader = document.querySelector(".section-header");
-      const editLink = document.createElement("a");
-      editLink.href = "#modal1";
-      editLink.className = "edit-link";
-      editLink.innerHTML = '<i class="fa-solid fa-pen-to-square"></i> modifier';
-      sectionHeader.appendChild(editLink);
+    /**----------------------MODALE 1---------------------------------------
+     * variable modale 1et2 en display:none
+     * fonction "openModal" a l'évenement, la cible est le lien "editLink"
+     * le display:none est annulé, la modal1 est lié a la cible
+     */
+    let modal1 = null;
+    let modal2 = null;
 
-      let modal = null;
+    const openModal = function (e) {
+      e.preventDefault();
+      const target = document.querySelector(e.target.getAttribute("href"));
+      target.style.display = null;
+      target.removeAttribute("aria-hidden");
+      target.setAttribute("aria-modal", "true");
+      modal1 = target;
+      modal1.addEventListener("click", closeModal);
+      modal1.querySelector(".js-modal-close").addEventListener("click", closeModal);
+      modal1.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
+    }
+    /**---------------------------------------------------------------------------------- */
 
-      const openModal = function (e) {
-        e.preventDefault();
-        const target = document.querySelector(e.target.getAttribute("href"));
-        target.style.display = null;
-        target.removeAttribute("aria-modal", "true");
-        modal = target;
-        modal.addEventListener("click", closeModal)
+    /**la fonction closeModal detecte si besoin de fermer sinon rien (performance)*/
+    const closeModal = function (e) {
+      if (modal1 === null && modal2 === null) return;
+      e.preventDefault();
+    
+      if (modal1) {
+        modal1.style.display = "none";
+        modal1.setAttribute("aria-hidden", "true");
+        modal1.removeAttribute("aria-modal");
+        modal1.removeEventListener("click", closeModal);
+        modal1.querySelector(".js-modal-close").removeEventListener("click", closeModal);
+        modal1.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation);
+        modal1 = null;
       }
-
-      const closeModal = function (e) {
-        if (modal === null) return;
-        e.preventDefault();
-        modal.style.display = "none";
-        modal.setAttribute("aria-hidden", "true");
-        modal.removeAttribute("aria-modal");
-        modal.removeEventListener("click", closeModal);
-        modal = null;
+    
+      if (modal2) {
+        modal2.style.display = "none";
+        modal2.setAttribute("aria-hidden", "true");
+        modal2.removeAttribute("aria-modal");
+        modal2.removeEventListener("click", closeModal);
+        modal2.querySelector(".js-modal-close").removeEventListener("click", closeModal);
+        modal2.querySelector(".js-modal-stop").removeEventListener("click", stopPropagation);
+        modal2 = null;
       }
+    }
 
-      document.querySelector(".edit-link");
+    const openModal2 = function (e) {
+      e.preventDefault();
+      closeModal(e);
+      const target = document.querySelector('#modal2');
+      target.style.display = null;
+      target.removeAttribute("aria-hidden");
+      target.setAttribute("aria-modal", "true");
+      modal2 = target;
+      modal2.addEventListener("click", closeModal);
+      modal2.querySelector(".js-modal-close").addEventListener("click", closeModal);
+      modal2.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
+    }
 
-      editLink.addEventListener("click", openModal);
+    const stopPropagation = function (e) {
+      e.stopPropagation();
+    }
+
+    const backToModal1 = function (e) {
+      e.preventDefault();
+      closeModal(e);
+      const target = document.querySelector('#modal1');
+      target.style.display = null;
+      target.removeAttribute("aria-hidden");
+      target.setAttribute("aria-modal", "true");
+      modal1 = target;
+      modal1.addEventListener("click", closeModal);
+      modal1.querySelector(".js-modal-close").addEventListener("click", closeModal);
+      modal1.querySelector(".js-modal-stop").addEventListener("click", stopPropagation);
+    }
+
+    document.querySelector(".edit-link").addEventListener("click", openModal);
+    document.getElementById("js-addButton").addEventListener("click", openModal2);
+    document.querySelector(".js-modal-back").addEventListener("click", backToModal1);
   }
 }
 /*---------------------------------------------------------------------------------------------*/
@@ -187,4 +243,18 @@ window.addEventListener('load', () => {
   editMode();
 });
 /*---------------------------------------------------------------------------------------------*/
+document.addEventListener('DOMContentLoaded', function () {
+  const deleteButtons = document.querySelectorAll('.delete-btn');
 
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const photoContainer = button.closest('.gallery-item');
+      
+      if (photoContainer) {
+        photoContainer.remove();
+      } else {
+        console.log("Le conteneur de la photo n'a pas été trouvé.");
+      }
+    });
+  });
+});

@@ -258,3 +258,28 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+
+/**PERMET DE CHANGER LE LOGIN EN LOGOUT ET DE DECO L UTILISATEUR */
+function toggleLoginLogout() {
+  const loginLink = document.querySelector("#loginLink");
+  
+  if (sessionStorage.authToken) {
+    loginLink.textContent = "Logout";
+    loginLink.addEventListener("click", logout);
+  } else {
+    loginLink.textContent = "Login";
+    loginLink.removeEventListener("click", logout);
+  }
+}
+
+
+function logout(event) {
+  event.preventDefault();
+  sessionStorage.removeItem("authToken");
+  window.location.reload();
+}
+
+
+window.addEventListener('load', toggleLoginLogout);
+/*--------------------------------------------------------------*/

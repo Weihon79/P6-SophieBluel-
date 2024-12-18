@@ -214,12 +214,18 @@ header a:hover {
     color: #FFFFFF;
 }
 /*---------------------------*/
+#portfolio {
+	justify-items: center;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	padding: 10px;
+	max-width: 1050px;
 }
 
 .gallery img {
@@ -526,5 +532,9 @@ footer nav ul {
 		top: 170%;
 		transform: translateY(-70%);
 		left: calc(50% + -30px);
+	}
+
+	.gallery {
+		grid-column-gap: 5px;
 	}
 }

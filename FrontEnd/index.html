@@ -47,112 +47,51 @@
 				<button class="js-modal-close closeButton"><i class="fa-solid fa-xmark"></i></button>
 				<h1 id="titlemodal">Galerie photo</h1>
 				<div class="gallery-modal">
-					<div class="gallery-item">
-						<img src="assets/images/abajour-tahina.png" alt="Abajour Tahina">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/appartement-paris-v.png" alt="Appartement Paris V">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/restaurant-sushisen-londres.png" alt="Restaurant Sushisen - Londres">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/la-balisiere.png" alt="Villa “La Balisiere” - Port Louis">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/structures-thermopolis.png" alt="Structures Thermopolis">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/appartement-paris-x.png" alt="Appartement Paris X">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/le-coteau-cassis.png" alt="Pavillon “Le coteau” - Cassis">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/villa-ferneze.png" alt="Villa Ferneze - Isola d’Elba">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/appartement-paris-xviii.png" alt="Appartement Paris XVIII">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/bar-lullaby-paris.png" alt="Bar “Lullaby” - Paris">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="gallery-item">
-						<img src="assets/images/hotel-first-arte-new-delhi.png" alt="Hotel First Arte - New Delhi">
-						<button class="delete-btn">
-							<i class="fa-solid fa-trash-can"></i>
-						</button>
-					</div>
-					<div class="seperate"></div>
-					<div class="addButton" id="js-addButton">Ajouter une photo</div>
+
 				</div>
+				<div class="seperate"></div>
+				<button class="addButton" id="js-addButton">Ajouter une photo</button>
 			</div>
 		</aside>
 
 		<aside id="modal2" class="js-modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
 			<div class="modal-wrapper modal-wrapper2 js-modal-stop">
-				<div class="gallery-modal flexcolumn">
-					<button class="js-modal-close closeButton"><i class="fa-solid fa-xmark"></i></button>
-					<button class="js-modal-back backButton"><i class="fa-solid fa-arrow-left"></i></button>
-					<h1 id="titlemodal2">Ajout photo</h1>
-					<div class="add-image-container">
-						<i class="fa-regular fa-image"></i>
-						<button class="addImage-modal2">+ Ajouter photo</button>
-						<p class="formatModal2">jpg, png : 4mo max</p>
-					</div>
-
+				<button class="js-modal-close closeButton"><i class="fa-solid fa-xmark"></i></button>
+				<button class="js-modal-back backButton"><i class="fa-solid fa-arrow-left"></i></button>
+				<h1 id="titlemodal2">Ajout photo</h1>
+				<div class="gallery-modal margin2">
 					<section id="form-modal2">
-						<form action="submit" method="POST">
-							<label for="title">Titre</label>
-							<input type="text" id="title" name="title" required><br><br>
-							<label for="category">Catégorie</label>
-							<select id="category" name="category" required>
-								<!--ICI EN JAVASCRIPT-->
-							</select>
+						<form id="projectForm" method="POST" enctype="multipart/form-data">
+							<div class="add-image-container">
+								<label for="imageInput" class="image-drop-zone" id="dropZone">
+								<i class="fa-regular fa-image"></i>
+								<button type="button" class="addImage-modal2" id="addPhotoButton">+ Ajouter photo</button>
+								<p class="formatModal2">jpg, png : 4mo max</p>
+								<input type="file" id="imageInput" name="image" accept="image/png, image/jpeg" hidden>
+								</label>
+							</div>
+
+							<div class="form-container">
+								<label for="title">Titre</label>
+								<input type="text" id="title" name="title" required><br><br>
+								<label for="category">Catégorie</label>
+								<select id="categorySelect" name="category" required>
+									<option value=""></option>
+								</select>
+								<div class="seperate seperate-modal2"></div>
+								<button type="submit" class="addButton" id="validateButton">Valider</button>
+							</div>
 						</form>
 					</section>
-
-					<div class="seperate"></div>
-					<div class="addButton">Valider</div>
 				</div>
 			</div>
 		</aside>
 
 		<nav class="filters">
-
+			<!-- Javascript fonction displayFilters -->
 		</nav>
 		<div class="gallery">
-
+			<!--Api works & category fonction displayGallery-->
 		</div>
 	</section>
 	<section id="contact">

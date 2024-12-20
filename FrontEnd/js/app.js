@@ -18,6 +18,7 @@ async function getWorks() {
 
       displayGallery(worksData);
 
+      displayGalleryInModal(worksData);
 
       displayFilters(categoriesData, worksData);
 
@@ -173,6 +174,8 @@ function editMode() {
     }
     /**---------------------------------------------------------------------------------- */
 
+
+    
     /**la fonction closeModal detecte si besoin de fermer sinon rien (performance)*/
     const closeModal = function (e) {
       if (modal1 === null && modal2 === null) return;
@@ -235,6 +238,42 @@ function editMode() {
   }
 }
 /*---------------------------------------------------------------------------------------------*/
+/**CETTE FONCTION SERT A AFFICHER DU CONTENU HTML DANS LE MODAL-WRAPPER DE LA MODALE 1
+ * 
+ * 
+ */
+function displayGalleryInModal(data) {
+  const modalGallery = document.querySelector(".gallery-modal"); // L'élément dans la modale où vous voulez afficher les éléments.
+  modalGallery.innerHTML = "";
+
+  data.forEach(item => {
+      const galleryItem = document.createElement("div");
+      galleryItem.classList.add("gallery-item");
+
+      const img = document.createElement("img");
+      img.src = item.imageUrl;
+      img.alt = item.title;
+
+      const deleteButton = document.createElement("button");
+      deleteButton.classList.add("delete-btn");
+      deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
+      
+      deleteButton.addEventListener("click", () => {
+        const photoContainer = galleryItem;
+        if (photoContainer) {
+          photoContainer.remove();
+        }
+      });
+
+      galleryItem.appendChild(img);
+      galleryItem.appendChild(deleteButton);
+
+      modalGallery.appendChild(galleryItem);
+  });
+}
+
+
+
 
 /**AJOUT D EVENEMENT AU CHARGEMENT DE LA PAGE APPELANT LES FONCTIONS DES TRAVAUX ET DU MODE EDITION
  */
@@ -243,21 +282,6 @@ window.addEventListener('load', () => {
   editMode();
 });
 /*---------------------------------------------------------------------------------------------*/
-document.addEventListener('DOMContentLoaded', function () {
-  const deleteButtons = document.querySelectorAll('.delete-btn');
-
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const photoContainer = button.closest('.gallery-item');
-      
-      if (photoContainer) {
-        photoContainer.remove();
-      } else {
-        console.log("Le conteneur de la photo n'a pas été trouvé.");
-      }
-    });
-  });
-});
 
 
 /**PERMET DE CHANGER LE LOGIN EN LOGOUT ET DE DECO L UTILISATEUR */
@@ -265,10 +289,10 @@ function toggleLoginLogout() {
   const loginLink = document.querySelector("#loginLink");
   
   if (sessionStorage.authToken) {
-    loginLink.textContent = "Logout";
+    loginLink.textContent = "logout";
     loginLink.addEventListener("click", logout);
   } else {
-    loginLink.textContent = "Login";
+    loginLink.textContent = "login";
     loginLink.removeEventListener("click", logout);
   }
 }
@@ -283,3 +307,21 @@ function logout(event) {
 
 window.addEventListener('load', toggleLoginLogout);
 /*--------------------------------------------------------------*/
+
+/**FONCTION POUR AJOUTER LES CATEGORIES DANS LE SELECT
+ */
+async function populateCategories() {
+  const categories = await getCategories();
+  const categorySelect = document.querySelector("#categorySelect");
+  
+  categorySelect.innerHTML = '';
+  
+  categories.forEach(category => {
+    const option = document.createElement("option");
+    option.value = category.id;
+    option.textContent = category.name;
+    categorySelect.appendChild(option);
+  });
+}
+
+populateCategories();

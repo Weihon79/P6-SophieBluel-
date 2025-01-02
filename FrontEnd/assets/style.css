@@ -474,6 +474,7 @@ footer nav ul {
 }
 
 .modal-wrapper .add-image-container {
+	position: relative;
 	padding: 15px;
 	margin-bottom: 20px;
 	border-radius: 3px;

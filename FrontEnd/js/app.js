@@ -17,7 +17,6 @@ async function initializeApp() {
     const categoriesData = await getCategories();
     console.log("Categories Data:", categoriesData);
 
-    getWorks();
     displayGallery(worksData);
     displayGalleryInModal(worksData);
     displayFilters(categoriesData, worksData);

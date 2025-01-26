@@ -36,10 +36,8 @@ async function handleSubmit(event) {
     });
 
     if (response.status != 200) {
-        const errorBox = document.createElement("div");
-        errorBox.className = ("loginError")
-        errorBox.innerHTML = "L'e-mail ou le mot de passe est erroné";
-        document.querySelector('form').prepend(errorBox);
+        const errorBox = document.getElementById("errorBox-js");
+        errorBox.classList.add("active");
     } else {
         let result = await response.json();
         const token = result.token;

@@ -249,12 +249,12 @@ header a:hover {
 #login /*ajouté*/ {
 	width: 100%;
 	margin: auto;
-}
-#login /*ajouté*/ {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 50px;
+	padding: 20px;
 }
 
 #contact,

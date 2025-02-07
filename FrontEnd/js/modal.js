@@ -1,3 +1,6 @@
+import { displayGallery, displayGalleryInModal } from './gallery.js';
+import { getWorks } from './api.js'
+
 // Gérer l'ouverture et la fermeture des modales
 export let modal1 = null;
 export let modal2 = null;
@@ -202,6 +205,11 @@ form.addEventListener("submit", async (event) => {
     dropZone.innerHTML = ''; // Supprimer la prévisualisation de l'image
 
     // Optionnel : Rafraîchir la galerie des projets ou les récupérer pour l'afficher
+
+    const worksData = await getWorks();
+    displayGallery(worksData);
+    displayGalleryInModal(worksData);
+
     // Vous pouvez aussi ici mettre à jour le DOM avec le nouveau projet ajouté si nécessaire
   } catch (error) {
     alert("Erreur lors de l'ajout du projet : " + error.message);
